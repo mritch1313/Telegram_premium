@@ -5,10 +5,11 @@
 ## Repository and upstream baseline
 
 - Working branch: `arena/8fb9cb13-telegram-premium`.
-- Checkout: `f2908b14133bbffbf7ab04f641ecb5bfaf533242` (`update to 12.10.6 (7112)`, 2026-09-30).
-- `upstream` is configured as `https://github.com/DrKLO/Telegram.git`; `upstream/master` was fetched and resolves to the same SHA as this checkout. Thus the checked-out source is the official Telegram Android tree at this revision, not a clean-room Telegram imitation.
+- Official Android source base: `f2908b14133bbffbf7ab04f641ecb5bfaf533242` (`update to 12.10.6 (7112)`, 2026-09-30); fetched `upstream/master` resolves to this SHA.
+- Downstream-only changes are audit documentation and `.github/workflows/build.yml`; Telegram Android application sources remain identical to the official base.
+- `upstream` is configured as `https://github.com/DrKLO/Telegram.git`; this fork is built directly on the official source, not a clean-room Telegram imitation.
 - Application version in `gradle.properties`: `12.10.6`, version code `7112`.
-- The checkout is shallow (`HEAD` is shown as grafted) and has no custom feature commits yet.
+- The checkout is shallow (`f2908b1` is shown as grafted), so full-history merge analysis still requires unshallow fetch.
 
 The baseline build was **not established**. `./gradlew --version` stops before Gradle starts with `JAVA_HOME is not set and no 'java' command could be found in your PATH`. This environment also has no Android SDK/NDK, CMake, `sdkmanager`, or emulator. Per the requested sequencing, feature code should not be changed until a clean upstream APK build can be performed in a correctly provisioned Android environment.
 

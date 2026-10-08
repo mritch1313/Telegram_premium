@@ -2,7 +2,7 @@
 
 > Audited on 2026-10-08 at Android source commit `f2908b14133bbffbf7ab04f641ecb5bfaf533242` (same SHA as official `DrKLO/Telegram` master at audit time).
 >
-> **Status in this checkout: none of the requested custom features is implemented.** The source tree is currently upstream-only. This file records extension points and dependencies; it is not a feature-completion claim. No feature code was added because the required clean baseline build is blocked by the missing JDK/Android SDK/NDK.
+> **Status in this checkout: none of the requested custom app features is implemented.** The Telegram Android application source remains identical to upstream; the only downstream commits are this audit documentation and an unverified build-workflow scaffold. This file records extension points and dependencies; it is not a feature-completion claim. No feature code was added because the required clean baseline build is blocked locally by the missing JDK/Android SDK/NDK.
 
 | Requested feature | Upstream extension points / dependencies | Custom code in this checkout | Proof still required |
 |---|---|---|---|

@@ -3,11 +3,10 @@
 ## Snapshot report (2026-10-08)
 
 - Downstream branch: `arena/8fb9cb13-telegram-premium`.
-- Downstream `HEAD`: `f2908b14133bbffbf7ab04f641ecb5bfaf533242`.
-- Official Android `upstream/master`: `f2908b14133bbffbf7ab04f641ecb5bfaf533242`.
-- Tracked source diff between the two SHAs: none.
-- Custom commits/features to preserve at this snapshot: none; the checkout is upstream-only.
-- Conflict result: **no divergence to merge at this snapshot**. This is not evidence that any requested custom feature works: none is implemented.
+- Official Android base / `upstream/master`: `f2908b14133bbffbf7ab04f641ecb5bfaf533242`.
+- Downstream-only additions are audit documentation and `.github/workflows/build.yml`; they do not change Telegram app source.
+- App-source diff versus the official base: none. The custom diff is documentation plus `.github/workflows/build.yml`.
+- Conflict result: **no Telegram-source divergence to merge at this snapshot**. This is not evidence that any requested custom feature works: none is implemented.
 - History caveat: the checkout is shallow (`grafted`). A future conflict analysis must fetch full history before computing merge bases or presenting a complete downstream/upstream change range.
 - Validation result: Android build/test not run locally. Gradle cannot start because no Java runtime is installed; Android SDK/NDK/CMake are also absent. A GitHub Actions baseline build scaffold exists at `.github/workflows/build.yml`, but no Actions run has verified it yet.
 

@@ -5,7 +5,8 @@
 - Official Android source: `https://github.com/DrKLO/Telegram.git` (`master`).
 - Downstream repository: `https://github.com/mritch1313/Telegram_premium.git` (`origin`).
 - The local Git remote `upstream` has been added and `master` fetched.
-- At the 2026-10-08 audit, `HEAD`, `upstream/master`, and the checkout's source revision are all `f2908b14133bbffbf7ab04f641ecb5bfaf533242` (`update to 12.10.6 (7112)`). `git diff HEAD upstream/master` is empty. This demonstrates the current source is the official tree at that SHA; no custom implementation commits exist yet.
+- At the initial 2026-10-08 source audit, the source base and `upstream/master` were both `f2908b14133bbffbf7ab04f641ecb5bfaf533242` (`update to 12.10.6 (7112)`).
+- The current session branch has downstream-only audit documentation and a build-workflow scaffold above that source base. The Telegram Android application source has not been modified; there are no custom app-feature commits yet.
 - The checkout is shallow and all 15 submodules are uninitialized. An actual update job must use a full-history checkout (`fetch-depth: 0`) and initialize recursive submodules at the gitlink revisions before building.
 
 ## Required update policy
