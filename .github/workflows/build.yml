@@ -27,7 +27,7 @@ jobs:
   android:
     name: Build APK and run Android instrumentation tests
     runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    timeout-minutes: 240
     steps:
       - name: Checkout source and pinned submodules
         uses: actions/checkout@v6.1.0

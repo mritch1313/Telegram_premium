@@ -23,7 +23,7 @@
 
 ## Workflow status
 
-There is no `.github/workflows/upstream-sync.yml` or `release.yml` in the checkout yet. `.github/workflows/build.yml` is a hosted baseline-build/instrumentation workflow. Its first completed run (`37826201297`) failed during Android SDK setup before SDK installation, Gradle build or tests; no APK was produced, and the exact step error is unavailable because the run logs could not be retrieved from this environment. The workflow has been updated to current Node 24-compatible action versions for another run. The upstream workflow should open a PR only after the clean Android build succeeds. This sandbox has no JDK/Android SDK/NDK, so the workflow cannot be validated locally.
+There is no `.github/workflows/upstream-sync.yml` or `release.yml` in the checkout yet. `.github/workflows/build.yml` is a hosted baseline-build/instrumentation workflow. First run `37826201297` failed during Android SDK setup. Rerun `37826983540` passed toolchain setup and release/test APK assembly, uploading a 62,835,297-byte baseline APK artifact, but its instrumentation step was canceled at the 120-minute job limit; no passing test result is established. The workflow timeout is now 240 minutes for a retry. The APK artifact is available on the [Actions run](https://github.com/mritch1313/Telegram_premium/actions/runs/37826983540), but this sandbox could not download it from GitHub’s external artifact-storage host. The upstream workflow should open a PR only after clean build and test checks pass. This sandbox has no JDK/Android SDK/NDK, so the workflow cannot be validated locally.
 
 ## Suggested reproducible local commands
 

@@ -8,7 +8,7 @@
 - App-source diff versus the official base: none. The custom diff is documentation plus `.github/workflows/build.yml`.
 - Conflict result: **no Telegram-source divergence to merge at this snapshot**. This is not evidence that any requested custom feature works: none is implemented.
 - History caveat: the checkout is shallow (`grafted`). A future conflict analysis must fetch full history before computing merge bases or presenting a complete downstream/upstream change range.
-- Validation result: Android build/test not run locally because Java and the Android toolchain are absent. Hosted run `37826201297` failed at `Set up Android SDK`; SDK installation, Gradle build and instrumentation tests were skipped, and no APK was produced. The run logs were not retrievable in this environment, so the exact action error is unknown. The workflow now uses Node 24-compatible action versions and awaits a rerun.
+- Validation result: no local build/test because Java and the Android toolchain are absent. Hosted run `37826201297` failed at Android SDK setup. Rerun `37826983540` completed release APK and test-APK assembly and uploaded the 62,835,297-byte baseline APK artifact, but instrumentation was canceled when the job reached its 120-minute limit; no passing test result is established. The workflow timeout is now 240 minutes. See the [Actions run](https://github.com/mritch1313/Telegram_premium/actions/runs/37826983540) for APK and report artifacts; artifact download from this sandbox is blocked by its external storage host.
 
 ## Required report format for later updates
 

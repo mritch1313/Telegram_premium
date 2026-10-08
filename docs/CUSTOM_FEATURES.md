@@ -2,7 +2,7 @@
 
 > Audited on 2026-10-08 at Android source commit `f2908b14133bbffbf7ab04f641ecb5bfaf533242` (same SHA as official `DrKLO/Telegram` master at audit time).
 >
-> **Status in this checkout: none of the requested custom app features is implemented.** The Telegram Android application source remains identical to upstream; downstream changes are this audit documentation and the build workflow. The first hosted run failed during Android SDK setup, before any Gradle build or test, and produced no APK; a rerun with current Node 24-compatible workflow actions is pending. This file records extension points and dependencies; it is not a feature-completion claim. No feature code was added because the required clean baseline build is blocked locally by the missing JDK/Android SDK/NDK.
+> **Status in this checkout: none of the requested custom app features is implemented.** The Telegram Android application source remains identical to upstream; downstream changes are this audit documentation and the build workflow. First hosted run `37826201297` failed during Android SDK setup. Rerun `37826983540` completed release APK and test-APK assembly and uploaded a baseline APK artifact, but instrumentation was canceled at the 120-minute job limit; no passing test result is established. The workflow timeout is now 240 minutes for another test attempt. This file records extension points and dependencies; it is not a feature-completion claim. No feature code was added; local Gradle execution remains blocked by missing JDK/Android SDK/NDK.
 
 | Requested feature | Upstream extension points / dependencies | Custom code in this checkout | Proof still required |
 |---|---|---|---|
@@ -27,6 +27,6 @@
 | Plugin architecture (future Python sandbox) | New `CustomPluginManager`, permission/API boundary and isolated storage would be required | None | Threat model, permission enforcement, lifecycle tests; no direct plugin access to auth/session/crypto secrets |
 | Russian/English localization | `TMessagesProj/src/main/res/values/strings.xml`, `values-ru/strings.xml`, Telegram localization/build tooling | None | Resource/lint checks; no new hardcoded UI text |
 | Upstream synchronization | Official `DrKLO/Telegram` remote; build/tests and high-risk compatibility review | Upstream remote is configured locally; no workflow yet | Scheduled/manual workflow, non-force update branch, conflict report, tests/build and PR; merge success is not feature correctness |
-| CI, APK and feature test suites | Gradle modules/variants, `TMessagesProj_AppTests`, Android SDK/NDK/CMake | `.github/workflows/build.yml` scaffold only; no feature tests | Run the hosted workflow, inspect actual APK/test results, then add feature-specific tests; current sandbox cannot execute Gradle because Java is absent |
+| CI, APK and feature test suites | Gradle modules/variants, `TMessagesProj_AppTests`, Android SDK/NDK/CMake | `.github/workflows/build.yml`; hosted baseline APK and test-APK assembly passed, but instrumentation timed out; no feature tests | Complete a bounded instrumentation run, inspect the APK/report artifacts, then add feature-specific tests; current sandbox cannot execute Gradle because Java is absent |
 
 All rows above remain in scope. The absence of implementation is intentionally explicit; no UI-only or fake backup/session behavior is being counted as delivered.
