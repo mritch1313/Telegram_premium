@@ -22,7 +22,7 @@ The baseline build was **not established**. `./gradlew --version` stops before G
 - Modules: `TMessagesProj` is the Android library containing the application UI, controllers, protocol models and native libraries; application shells are `TMessagesProj_App`, `TMessagesProj_AppHuawei`, `TMessagesProj_AppHockeyApp`, `TMessagesProj_AppStandalone`; `TMessagesProj_AppTests` is the instrumentation-test app. `TMessagesProj_Modules/media` supplies Media3 modules; `jlatexmath` is included from a submodule.
 - The primary app has `bundleAfat`, `bundleAfat_SDK23`, and `afat` flavors plus debug/release/standalone build types. Huawei, HockeyApp, standalone, and test modules have their own variant definitions. The README asks for Android Studio 2025.1.4, NDK 27.2.12479018, and SDK 36.
 - There are 15 Git submodules in `.gitmodules`. In this checkout all 15 show a leading `-` in `git submodule status`, meaning they are not initialized. A full native build therefore also needs `git submodule update --init --recursive`.
-- The working branch now contains `.github/workflows/build.yml`, a hosted clean-build/instrumentation workflow scaffold. It has not run yet. Upstream-sync and release workflows do not exist.
+- The working branch contains `.github/workflows/build.yml`, a hosted clean-build/instrumentation workflow. GitHub Actions run `37826201297` checked out the repository and installed JDK 17, then failed in `Set up Android SDK`; SDK package installation, APK build and instrumentation steps were skipped, and no APK was produced. The run logs could not be retrieved in this environment, so the exact action error is unknown. The workflow now uses current Node 24-compatible action versions for a rerun. Upstream-sync and release workflows do not exist.
 
 ## Runtime architecture
 
@@ -68,7 +68,7 @@ The baseline build was **not established**. `./gradlew --version` stops before G
 ### Settings, localization and tests
 
 - Settings use Telegram’s fragment/cell/theme infrastructure in `SettingsActivity` and the individual `*Activity`/fragment screens; strings live in Android resources under `TMessagesProj/src/main/res/values*` (including `values-ru`).
-- `TMessagesProj_AppTests` contains Android instrumentation tests, including generated TL scheme tests plus TLS/database tests. These are not tests for any requested fork features. No build or test workflow currently exists in GitHub Actions.
+- `TMessagesProj_AppTests` contains Android instrumentation tests, including generated TL scheme tests plus TLS/database tests. These are not tests for any requested fork features. A hosted build/test workflow exists, but no build or test task has succeeded yet.
 
 ## Authorization/session implications
 
